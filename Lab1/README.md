@@ -71,6 +71,8 @@ System A reads the binary flight data and converts it into a CSV format and stor
    ```
 5. Output will be generated in `Output/OutputA.csv`.
 
+*Optional*: To specify a custom input file, add the input file into the `DataSets` directory and change the file name to `FlightData.dat` or change the code in `SourceFilter.java` to read from the new file.
+
 ### System B
 System B extends System A by adding a `MiddleFilter` that detects and corrects "wild jumps" in altitude (replacing them with the average of previous values). It produces an annotated CSV output and a separate log of wild jumps.
 
@@ -93,6 +95,8 @@ System B extends System A by adding a `MiddleFilter` that detects and corrects "
    ```
 5. Output will be generated in `Output/OutputB.csv` (corrected data with asterisks `*` on replaced values).
 6. Wild jump records will be logged in `Output/WildPoints.csv`.
+
+*Optional*: To specify a custom input file, add the input file into the `DataSets` directory and change the file name to `FlightData.dat` or change the code in `SourceFilter.java` to read from the new file.
 
 ## Implementation Details
 - **System A**:
