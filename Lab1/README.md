@@ -53,7 +53,7 @@ System A reads the binary flight data and converts it into a CSV format and stor
 
 **Steps:**
 
-1. Navigate to the `SystemA` directory.
+1. Navigate to the `SystemA` directory:
    ```bash
    cd ./SystemA
    ```
@@ -77,7 +77,7 @@ System A reads the binary flight data and converts it into a CSV format and stor
 System B extends System A by adding a `MiddleFilter` that detects and corrects "wild jumps" in altitude (replacing them with the average of previous values). It produces an annotated CSV output and a separate log of wild jumps.
 
 **Steps:**
-1. Navigate to the `SystemB` directory.
+1. Navigate to the `SystemB` directory:
    ```bash
    cd ./SystemB
    ```
