@@ -5,14 +5,6 @@ This project implements a pipe-and-filter architecture to process flight data.
 It consists of two systems, **System A** and **System B**, both built upon a common framework.
 
 ## Directory Structure
-- `SystemA/`: Source code for System A.
-    - `DataSets/`: Contains input data.
-    - `Output/`: Contains output files.
-- `SystemB/`: Source code for System B.
-    - `DataSets/`: Contains input data.
-    - `Output/`: Contains output files.
-- `Lab1/`: Original lab files and templates.
-
 ```bash
 $ tree SystemA -L 2 && tree SystemB -L 2
 
@@ -42,6 +34,14 @@ SystemB
 
 3 directories, 8 files
 ```
+
+- `SystemA/`: Source code for System A.
+    - `DataSets/`: Contains input data.
+    - `Output/`: Contains output files.
+- `SystemB/`: Source code for System B.
+    - `DataSets/`: Contains input data.
+    - `Output/`: Contains output files.
+- `Lab1/`: Original lab files and templates.
 
 ## Build and Execution
 
@@ -104,5 +104,6 @@ System B extends System A by adding a `MiddleFilter` that detects and corrects "
     - `MiddleFilter`: Pass-through filter.
     - `SinkFilter`: Formats dataframes into CSV line `Time,Velocity,Altitude,Pressure,Temperature`.
 - **System B**:
+    - `SourceFilter`: Reads `DataSets/FlightData.dat`.
     - `MiddleFilter`: Buffers frames, checks for altitude jumps (>100ft variation), filters them, and logs original values to `Output/WildPoints.csv`. Corrected altitudes are flagged with ID 6 in the stream.
     - `SinkFilter`: Handles ID 6 by appending `*` to the altitude value in the CSV output.
