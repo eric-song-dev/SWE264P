@@ -112,7 +112,6 @@ public class MiddleFilter extends FilterFramework {
                 }
 
             } catch (EndOfStreamException e) {
-                ClosePorts();
                 // Write the last frame if it exists
                 if (frameStarted) {
                     processFrame(bufTime, bufVel, bufAlt, bufPress, bufTemp, bufPitch, wildPointsWriter, TimeStamp, TimeStampFormat);
@@ -120,6 +119,7 @@ public class MiddleFilter extends FilterFramework {
                 if (wildPointsWriter != null) {
                     wildPointsWriter.close();
                 }
+                ClosePorts();
                 System.out.println("\n" + this.getName() + "::Middle Exiting; bytes read: " + bytesread);
                 break;
             }

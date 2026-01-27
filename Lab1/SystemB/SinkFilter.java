@@ -159,7 +159,6 @@ public class SinkFilter extends FilterFramework {
 			*	written letting the user know what is going on.
 			********************************************************************************/
             catch (EndOfStreamException e) {
-                ClosePorts();
                 // Write the last frame if it exists
                 if (frameStarted) {
                     pw.print(TimeStampFormat.format(TimeStamp.getTime()));
@@ -173,6 +172,7 @@ public class SinkFilter extends FilterFramework {
                 if (pw != null) {
                     pw.close();
                 }
+                ClosePorts();
                 System.out.print("\n" + this.getName() + "::Sink Exiting; bytes read: " + bytesread);
                 break;
             }
