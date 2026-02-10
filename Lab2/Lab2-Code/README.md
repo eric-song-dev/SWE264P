@@ -10,21 +10,23 @@ This is a student course registration system implemented using the **Implicit-In
 
 ## How to Compile
 
-Open a terminal, navigate to the directory containing the source files, and type:
-
+```bash
+cd Lab2-Code
 ```
+
+```bash
 javac *.java
 ```
 
 ## How to Run
 
-```
+```bash
 java SystemMain Students.txt Courses.txt
 ```
 
 ## How to Test
 
-```
+```bash
 java SystemMain Students.txt Courses.txt < test.txt
 ```
 
