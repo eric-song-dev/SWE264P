@@ -29,8 +29,8 @@ class SystemMain {
 			studentFileName = args[0];
 			courseFileName = args[1];
 		} else {
-			studentFileName = "bin/Students.txt";
-			courseFileName = "bin/Courses.txt";		
+			studentFileName = "Students.txt";
+			courseFileName = "Courses.txt";
 		}
 
 		// Check if input files exists.
@@ -81,6 +81,15 @@ class SystemMain {
 					db,
 					EventBus.EV_REGISTER_STUDENT,
 					EventBus.EV_SHOW);
+
+			// Modification A: Logging component - writes all EV_SHOW output to a log file.
+			LoggingHandler objLoggingHandler = new LoggingHandler();
+
+			// Modification B: Overbooking notification component - warns when course has >3 students.
+			OverbookingHandler objOverbookingHandler = new OverbookingHandler(db);
+
+			// Modification C: Conflict checking component - validates registration before proceeding.
+			ConflictCheckHandler objConflictCheckHandler = new ConflictCheckHandler(db);
 
 			ClientInput objClientInput = new ClientInput();
 			ClientOutput objClientOutput = new ClientOutput();

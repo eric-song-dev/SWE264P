@@ -38,26 +38,12 @@ public class RegisterStudentHandler extends CommandEventHandler {
         String sCID     = objTokenizer.nextToken();
         String sSection = objTokenizer.nextToken();
 
-        // Get the student and course records.
-        Student objStudent = this.objDataBase.getStudentRecord(sSID);
-        Course objCourse = this.objDataBase.getCourseRecord(sCID, sSection);
-        if (objStudent == null) {
-            return "Invalid student ID";
-        }
-        if (objCourse == null) {
-            return "Invalid course ID or course section";
-        }
-
-        // Check if the given course conflicts with any of the courses the student has registered.
-        ArrayList vCourse = objStudent.getRegisteredCourses();
-        for (int i=0; i<vCourse.size(); i++) {
-            if (((Course) vCourse.get(i)).conflicts(objCourse)) {
-                return "Registration conflicts";
-            }
-        }
-
-        // Request validated. Proceed to register.
+        // Proceed to register (validation and conflict checking is handled by ConflictCheckHandler).
         this.objDataBase.makeARegistration(sSID, sCID, sSection);
+
+        // Announce registration success so OverbookingHandler can react.
+        EventBus.announce(EventBus.EV_REGISTRATION_SUCCESS, sCID + " " + sSection);
+
         return "Successful!";
     }
 }

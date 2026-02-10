@@ -19,6 +19,7 @@ import java.util.Observer;
  * object. This ensures that the existence of other components is completely hidden to a component
  * and it's safe to subscribe to an event when there is no component that can announce the event.
  */
+@SuppressWarnings("deprecation")
 public class EventBus {
 
     /**
@@ -69,6 +70,16 @@ public class EventBus {
      * Command event #6 definition: register a student for a course. 
      */
     public static final int EV_REGISTER_STUDENT = 6;
+
+    /**
+     * Command event #7 definition: check course conflict before registration.
+     */
+    public static final int EV_CHECK_CONFLICT = 7;
+
+    /**
+     * Command event #8 definition: registration success notification.
+     */
+    public static final int EV_REGISTRATION_SUCCESS = 8;
 
     /**
      * The number of defined events.
